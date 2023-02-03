@@ -1,0 +1,30 @@
+/* BOTTOM */
+
+.bottom{
+    /* border: 1px solid blue; */
+    width: 30%;
+    margin: auto;
+    display: flex;
+    margin-top: 50px;
+  }
+  .bottom > form{
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    width: 100%;
+  }
+  .bottom > form > input,  .bottom > form > select{
+    width: 100%;
+    padding: 10px 5px;
+    border-bottom: 1px solid black;
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  .bottom > form > input:last-child{
+    background-color: grey;
+    border-radius: 7px;
+    margin-top: 45px;
+    border-bottom: none;
+    cursor: pointer;
+  }
+

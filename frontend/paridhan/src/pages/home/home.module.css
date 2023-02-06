@@ -1,0 +1,91 @@
+.main{
+    padding-top: 60px;
+}
+.banner{
+    background-image: url("https://www.sheknows.com/wp-content/uploads/2019/02/items-of-clothing.jpg?w=1920");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content{
+    background-color: rgba(255, 255, 255, 0.564);
+    height: 300px;
+    width: 800px;
+    padding: 40px 0;
+    /* border: 2px solid black; */
+}
+.content > h1{
+    font-size: 80px;
+}
+
+.featured{
+    border: 1px solid red;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
+.featured > .container {
+    border: 1px solid black;
+    width: 1300px;
+    height: 100%;
+}
+.featured > .container > .feat_prods {
+    border: 2px solid blue;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.feat_prods > .left{
+    height: 100%;
+    width: 30%;
+}
+.feat_prods > .right{
+    height: 100%;
+    width: 70%;
+}
+.feat_prods > .left > a:nth-child(1) > div {
+    border: 1px solid green;
+    width: 100%;
+    height: 100%;
+}
+.feat_prods > .right > a:nth-child(1) > div {
+    border: 1px solid yellow;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.feat_prods > .right > div:nth-child(2) > a > div {
+    border: 1px solid green;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+.feat_prods > .right > div:nth-child(2) > a:nth-child(1) > div >  {
+    border: 1px solid green;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+h2{
+    font-size: 30px;
+}

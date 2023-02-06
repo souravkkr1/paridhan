@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import {
-  // Button,
+  Button,
   IconButton,
   Menu,
   MenuButton,
@@ -12,10 +12,12 @@ import {
 import { ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons";
 import style from "./navbar.module.css";
 
+const isAuth=true;
+
 const Navbar = () => {
   return (
     <div className={style.navbar}>
-      <div className={style.ham}>
+       <div className={style.ham}>
         <Menu>
           <MenuButton
             as={IconButton}
@@ -54,7 +56,8 @@ const Navbar = () => {
       </div>
       <div className={style.left}>
         <Link to="/">
-          <img src="" alt="" />
+          {/* <img src={logo} alt="" /> */}
+          <h1>PARIDHAN</h1>
         </Link>
         <div className={style.menu}>
           <ul>
@@ -79,10 +82,34 @@ const Navbar = () => {
         </div>
       </div>
       <div className={style.right}>
-        <Link>SOCIAL</Link>
-        <Link>SEARCH</Link>
+        <Link to="">OFFERS</Link>
+        <Link to="">SEARCH</Link>
         <Link to={"/cart"}>CART</Link>
-        
+        <Menu>
+          <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+            {isAuth ? "SOURAV" : `PROFILE`}
+          </MenuButton>
+          {!isAuth ? (
+            <MenuList>
+              <MenuItem>
+                <Link to="/signin">
+                  <button>Sign In</button>
+                </Link>
+              </MenuItem>
+              <MenuItem>
+                <Link to="/signup">
+                  <button>Sign Up</button>
+                </Link>
+              </MenuItem>
+            </MenuList>
+          ) : (
+            <MenuList>
+              <MenuItem>
+                <button>Sign out</button>
+              </MenuItem>
+            </MenuList>
+          )}
+        </Menu>
       </div>
     </div>
   );

@@ -1,0 +1,25 @@
+.navbar{
+    /* border: 1px solid red; */
+    padding: 10px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 0px 0px rgb(85 85 85 / 8%), 0px 2px 16px rgb(85 85 85 / 16%);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar > .left > h1{
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.navbar > .mid > a{
+   padding: 0 40px;
+   color: #D3145A;
+   font-weight: 600;
+}
+.navbar > .mid > a:hover{
+   color: black;
+}

@@ -3,11 +3,13 @@ import './App.css';
 import Home from '../src/pages/home/Home'
 import AllRoutes from './routes/AllRoutes';
 import Navbar from './components/navbar/Navbar';
+import Nav from './admin/nav/Nav';
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      {/* <Nav /> */}
+      {/* <Navbar /> */}
       <AllRoutes />
     </div >
   );

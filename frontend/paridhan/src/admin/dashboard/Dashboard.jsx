@@ -1,11 +1,16 @@
 import React from 'react'
+import Nav from '../nav/Nav'
 import style from './dashboard.module.css'
 
 const Dashboard = () => {
   return (
-    <div>
+    <>
+    <Nav/>
+     <div>
       
-    </div>
+      </div>
+    </>
+   
   )
 }
 

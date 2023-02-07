@@ -1,11 +1,13 @@
 import React from 'react'
 import style from './home.module.css'
 import {Link} from 'react-router-dom'
+import Navbar from '../../components/navbar/Navbar'
 
 const home = () => {
   return (
+    <>
+    <Navbar/>
     <div className={style.main}>
-
       <div className={style.banner}>
         <div className={style.content}>
           <h1>Welcome to Paridhan</h1>
@@ -87,6 +89,7 @@ const home = () => {
       </div>
       
     </div>
+    </>
   )
 }
 

@@ -27,17 +27,17 @@ const Navbar = () => {
           />
           <MenuList>
             <MenuItem>
-              <Link to="/products?gender=female">
+              <Link to="/all-products?gender=female">
                 <button>WOMEN</button>
               </Link>
             </MenuItem>
             <MenuItem>
-              <Link to="/products?gender=male">
+              <Link to="/all-products?gender=male">
                 <button>MEN</button>
               </Link>
             </MenuItem>
             <MenuItem>
-              <Link to="/products?gender=kids">
+              <Link to="/all-products?gender=kids">
                 <button>KIDS</button>
               </Link>
             </MenuItem>

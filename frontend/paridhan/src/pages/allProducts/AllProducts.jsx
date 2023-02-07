@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './products.module.css'
+import style from './allProducts.module.css'
 
 const products = () => {
   return (

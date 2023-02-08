@@ -3,6 +3,131 @@ import Nav from '../nav/Nav'
 import style from './products.module.css'
 
 const Products = () => {
+
+        const prods=[
+            {
+                id:"1",
+                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
+                Name:"Baby shoes",
+                Price:"$20",
+                Offer:"25% OFF",
+                Purchased:"	61",
+                Stock:"	5421E",
+                Status:"ACTIVE",
+                Date:"2021-10-30",
+                Action:""
+            },
+            {
+                id:"2",
+                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
+                Name:"Baby shoes",
+                Price:"$20",
+                Offer:"25% OFF",
+                Purchased:"	61",
+                Stock:"	5421E",
+                Status:"ACTIVE",
+                Date:"2021-10-30",
+                Action:""
+            },
+            {
+                id:"3",
+                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
+                Name:"Baby shoes",
+                Price:"$20",
+                Offer:"25% OFF",
+                Purchased:"	61",
+                Stock:"	5421E",
+                Status:"ACTIVE",
+                Date:"2021-10-30",
+                Action:""
+            },
+            {
+                id:"4",
+                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
+                Name:"Baby shoes",
+                Price:"$20",
+                Offer:"25% OFF",
+                Purchased:"	61",
+                Stock:"	5421E",
+                Status:"ACTIVE",
+                Date:"2021-10-30",
+                Action:""
+            },
+            {
+                id:"5",
+                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
+                Name:"Baby shoes",
+                Price:"$20",
+                Offer:"25% OFF",
+                Purchased:"	61",
+                Stock:"	5421E",
+                Status:"ACTIVE",
+                Date:"2021-10-30",
+                Action:""
+            },
+            {
+                id:"6",
+                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
+                Name:"Baby shoes",
+                Price:"$20",
+                Offer:"25% OFF",
+                Purchased:"	61",
+                Stock:"	5421E",
+                Status:"ACTIVE",
+                Date:"2021-10-30",
+                Action:""
+            },
+            {
+                id:"7",
+                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
+                Name:"Baby shoes",
+                Price:"$20",
+                Offer:"25% OFF",
+                Purchased:"	61",
+                Stock:"	5421E",
+                Status:"ACTIVE",
+                Date:"2021-10-30",
+                Action:""
+            },
+            {
+                id:"8",
+                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
+                Name:"Baby shoes",
+                Price:"$20",
+                Offer:"25% OFF",
+                Purchased:"	61",
+                Stock:"	5421E",
+                Status:"ACTIVE",
+                Date:"2021-10-30",
+                Action:""
+            },
+            {
+                id:"9",
+                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
+                Name:"Baby shoes",
+                Price:"$20",
+                Offer:"25% OFF",
+                Purchased:"	61",
+                Stock:"	5421E",
+                Status:"ACTIVE",
+                Date:"2021-10-30",
+                Action:""
+            },
+            {
+                id:"10",
+                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
+                Name:"Baby shoes",
+                Price:"$20",
+                Offer:"25% OFF",
+                Purchased:"	61",
+                Stock:"	5421E",
+                Status:"ACTIVE",
+                Date:"2021-10-30",
+                Action:""
+            }
+          ]
+
+
   return (
     <>
         <Nav/>
@@ -103,7 +228,36 @@ const Products = () => {
                             <input type="submit" value="Add Product" />
                     </form>
                     <div className={style.list}>
-                        
+                        <table className={style.userTable}>
+                        <thead>
+                            <tr>
+                                <td>Id</td>
+                                <td>Image</td>
+                                <td>Name</td>
+                                <td>Price</td>
+                                <td>Purchased</td>
+                                <td>Stock</td>
+                                <td>Action</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                prods.map((el)=>{
+                                    return(
+                                        <tr key={el.id} >
+                                            <td>{el.id}</td>
+                                            <td><img style={{width:"50px"}} src={el.Product} alt="profile"/></td>
+                                            <td>{el.Name}</td>
+                                            <td>{el.Price}</td>
+                                            <td>{el.Purchased}</td>
+                                            <td>{el.Stock}</td>
+                                            <td><button>Info</button></td>
+                                        </tr>
+                                    )
+                                })                
+                            }  
+                        </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

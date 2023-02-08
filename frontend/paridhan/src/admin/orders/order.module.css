@@ -1,0 +1,67 @@
+.main{
+    padding-top: 60px;
+}
+.orders{
+    /* border: 1px solid red; */
+    display: flex;
+    width: 90%;
+    margin: 50px auto;
+}
+form{
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    width: 40%;
+    /* border: 1px solid green; */
+    padding: 40px 0;
+    position: fixed;
+    background-color: antiquewhite;
+    height: 100vh;
+}
+input, select, textarea{
+    border: 1px solid  rgb(205, 204, 204);
+    padding: 5px !important;
+    margin-bottom:10px !important ;
+    border-radius: 10px;
+    width: 80%;
+}
+.list{
+    /* border: 1px solid blue; */
+    width: 60%;
+    height: 1000px;
+    position: absolute;
+    right: 0;
+    z-index: -100;
+}
+
+.orderTable {
+    width: 100%;
+    margin: auto;
+    /* margin-left: 25%; */
+    /* margin-top: 50px; */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    text-align: center;
+  }
+  .orderTable >  thead {
+    background-color: #e2e1dd;
+  }
+  .orderTable > tbody {
+    font-size: 18px;
+  }
+  td{
+    padding: 10px 0px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+  }
+  td > img{
+    margin: auto;
+  }
+  
+  .orderTable > tbody > tr > td > button{
+    width:70px;
+    height:30px;
+    border-radius:40px;
+    background-color:#D3145A;
+    color:white
+  }

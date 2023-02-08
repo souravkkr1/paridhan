@@ -34,3 +34,33 @@ input, select, textarea{
     right: 0;
     z-index: -100;
 }
+
+.userTable {
+    width: 100%;
+    margin: auto;
+    /* margin-left: 25%; */
+    /* margin-top: 50px; */
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    text-align: center;
+  }
+  .userTable >  thead {
+    background-color: #e2e1dd;
+  }
+  .userTable > tbody {
+    font-size: 18px;
+  }
+  td{
+    padding: 10px 0px;
+    border-bottom: 1px solid rgb(221, 221, 221);
+  }
+  td > img{
+    margin: auto;
+  }
+  
+  .userTable > tbody > tr > td > button{
+    width:70px;
+    height:30px;
+    border-radius:40px;
+    background-color:#D3145A;
+    color:white
+  }

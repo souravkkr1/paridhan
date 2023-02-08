@@ -9,6 +9,7 @@ import CartPage from '../pages/cartPage/CartPage'
 import Dashboard from '../admin/dashboard/Dashboard'
 import Products from '../admin/products/Products'
 import Users from '../admin/users/Users'
+import Orders from '../admin/orders/Orders'
 
 const AllRoutes = () => {
   return (
@@ -23,6 +24,7 @@ const AllRoutes = () => {
         <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/products" element={<Products/>} />
         <Route path="/users" element={<Users/>} />
+        <Route path="/orders" element={<Orders/>} />
       </Routes>
     </div>
   )

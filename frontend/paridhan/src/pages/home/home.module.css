@@ -111,3 +111,23 @@ h2{
 h2{
     font-size: 30px;
 }
+.prods{
+    /* border: 1px solid green; */
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.prod_box{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+}
+h3{
+    font-size: 20px !important;
+    font-weight: 600 !important;
+}

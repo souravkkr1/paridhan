@@ -62,13 +62,13 @@ const Navbar = () => {
         <div className={style.menu}>
           <ul>
             <li>
-              <Link to="/products?gender=female">WOMEN</Link>
+              <Link to="/all-products?gender=female">WOMEN</Link>
             </li>
             <li>
-              <Link to="/products?gender=male">MEN</Link>
+              <Link to="/all-products?gender=male">MEN</Link>
             </li>
             <li>
-              <Link to="/products?gender=kids">KIDS</Link>
+              <Link to="/all-products?gender=kids">KIDS</Link>
             </li>
             <li>
               <Link to="/">HOME</Link>

@@ -22,21 +22,23 @@ const home = () => {
           <h2>FEATURED PRODUCTS</h2>
           <div className={style.feat_prods}>
             <div className={style.left}>
-              <Link to="">
-                <div></div>
-              </Link>
+              
+                <div>
+                  
+                </div>
+              
             </div>
             <div className={style.right}>
-              <Link to="">
-                <div></div>
-              </Link>
               <div>
-                <Link to="">
-                  <div></div>
-                </Link>
-                <Link to="">
-                  <div></div>
-                </Link>
+      
+              </div>
+              <div>
+                <div>
+                  <img src="https://pbs.twimg.com/media/E1plYHMUUAIrR2g.jpg" alt="" />
+                </div>
+                <div>
+                  <img src="https://www.nandanigarments.com/image/banner%2013.jpg" alt="" />
+                </div>
               </div>
               
             </div>

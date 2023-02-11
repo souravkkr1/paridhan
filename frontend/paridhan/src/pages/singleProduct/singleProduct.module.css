@@ -1,0 +1,98 @@
+.main{
+    padding-top: 100px;
+    width: 100%;
+}
+.container{
+    /* border: 1px solid red; */
+    width: 1300px;
+    margin: auto;
+    display: flex;
+    /* flex-direction: column; */
+    height: auto;
+    margin-bottom: 50px;
+}
+.container > .left{
+    /* border: 1px solid green; */
+    width: 40%;
+    height: 100%;
+}
+.container > .left > img{
+    width: 70%;
+    margin: auto;
+}
+.container > .right{
+    /* border: 1px solid blue; */
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+.right > .price{
+    /* border: 1px solid black; */
+    display: flex;
+    gap: 15px;
+}
+.right > .price > p:first-child{
+    color: #D3145A;
+}
+.right > .price > p:last-child{
+    text-decoration: line-through;
+}
+.right > .size {
+    display: flex;
+    gap: 20px;
+    margin: 25px 0;
+}
+.right > .size > p {
+    /* border: 1px solid black; */
+    padding: 10px 13px;
+    font-weight: 600;
+    background-color: rgb(226, 226, 226);
+}
+.right > .size > p:first-child {
+    background-color: #D3145A;
+    color: white;
+}
+.right > button {
+    background-color: #D3145A;
+    border: 1px solid #D3145A;
+    color: white;
+    padding: 15px;
+    width: 260px;
+    margin: 25px 0;
+}
+.right > button:hover {
+    background-color: white;
+    color: #D3145A;
+}
+.right > .desc{
+    width: 70%;
+    text-align: center;
+    margin: 20px 0;
+}
+.info{
+    border: 2px solid black;
+    padding: 13px 30px;
+    margin: 20px 0;
+}
+
+.moreLikeThis{
+    width: 100%;
+    height: 400px;
+}
+.moreLikeThis > .container{
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    width: 1200px;
+    margin: auto;
+}
+.moreLikeThis > .container > .box{
+    width: 1200px;
+    margin: auto;
+    /* border:1px solid red; */
+    display: flex;
+    gap: 30px;
+}

@@ -1,0 +1,44 @@
+.prodBox > .details{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+.prodBox > .details > div{
+    text-align: left;
+    width: 100%;
+}
+.price{
+    /* border: 1px solid green; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.price > div{
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    font-size: 20px;
+}
+.price > div > p:nth-child(2){
+    color: gray;
+    font-size: 14px;
+    text-decoration: line-through;
+}
+.price > div > p:nth-child(3){
+    color: green;
+    font-size: 14px;
+}
+.price > button{
+   background-color: #D3145A;
+   text-align: right;
+   color: white;
+   padding: 5px 20px;
+   border: 1px solid #D3145A;
+}
+.price > button:hover{
+   background-color: white;
+   color: #D3145A;
+   /* border: 1px solid #D3145A; */
+}

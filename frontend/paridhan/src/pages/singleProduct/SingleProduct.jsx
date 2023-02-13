@@ -2,6 +2,7 @@ import React from 'react'
 import style from './singleProduct.module.css'
 import Navbar from '../../components/navbar/Navbar'
 import ProdBox from '../../components/prodBox/ProdBox'
+import {Link} from 'react-router-dom'
 
 const prod=[
   {
@@ -67,7 +68,7 @@ const SingleProduct = () => {
             <p>34</p>
             <p>36</p>
           </div>
-          <button>add to cart</button>
+          <Link to="/cart"><button>add to cart</button></Link>
           <p className={style.desc}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero tempore cupiditate ea repellat quos enim nostrum eligendi eum nemo corporis.
           </p>

@@ -55,7 +55,7 @@
     background-color: #D3145A;
     color: white;
 }
-.right > button {
+.right > a > button {
     background-color: #D3145A;
     border: 1px solid #D3145A;
     color: white;
@@ -63,7 +63,7 @@
     width: 260px;
     margin: 25px 0;
 }
-.right > button:hover {
+.right > a > button:hover {
     background-color: white;
     color: #D3145A;
 }

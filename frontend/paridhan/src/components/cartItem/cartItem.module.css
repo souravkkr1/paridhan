@@ -1,0 +1,24 @@
+.cartItem{
+    border: 1px solid black;
+    height: 200px;
+    display: flex;
+}
+.cartItem > .left{
+    border: 1px solid red;
+    height: 100%;
+    width: 60%;
+    display: flex;
+    gap: 20px;
+}
+.cartItem > .left > img{
+    width: auto;
+    height: 100%;
+}
+.cartItem > .left > div{
+    text-align: left;
+}
+.cartItem > .right{
+    border: 1px solid green;
+    height: 100%;
+    width: 40%;
+}

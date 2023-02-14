@@ -1,5 +1,6 @@
 import React from 'react'
 import style from './cartItem.module.css'
+import { Link } from 'react-router-dom'
 
 const addedProd={
 
@@ -11,10 +12,10 @@ const CartItem = ({name, price, discPrice, img, desc, size, color} ) => {
       <div className={style.left}>
         <img src={img} alt="" />
         <div>
-            <h2>{name}</h2>
-            <p>{desc}</p>
+            <h3>{name}</h3>
             <p>size: {size}</p>
             <p>color: {color}</p>
+            <Link to="">Remove</Link>
         </div>
       </div>
       <div className={style.right}>

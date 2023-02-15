@@ -1,0 +1,87 @@
+.main{
+    padding-top: 70px;
+    width: 100%;
+}
+.container{
+    /* border: 1px solid red; */
+    width: 1300px;
+    margin: auto;
+    display: flex;
+    /* flex-direction: column; */
+    height: 700px;
+    margin-bottom: 50px;
+}
+
+/* LEFT SIDE */
+
+.container > .left{
+    /* border: 1px solid green; */
+    width: 65%;
+    height: 100%;
+    padding: 0 20px;
+}
+.container > .left > h3{
+    font-size: 25px;
+}
+
+/* RIGHT SIDE */
+
+.container > .right{
+    /* border: 1px solid blue; */
+    width: 35%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: flex-end;
+    margin-top: 40px;
+}
+.container > .right > .box, .container > .right > .coupon{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    width: 95%;
+    text-align: left;
+    padding: 20px 30px;
+    border-radius: 7px;
+}
+.container > .right > .box > h2{
+    font-size: 20px;
+}
+.container > .right > .box > div > div{
+    /* border: 1px solid green; */
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    color: gray;
+}
+.container > .right > .box > div > div:nth-child(3){
+    border-top: 1px solid grey;
+    padding-top: 20px;
+    font-size: 18px;
+    color: black;
+}
+.container > .right > .box > a > button{
+   border: 1px solid #D3145A;
+   background-color: #D3145A;
+   color: white;
+   padding: 10px 20px;
+   width: 200px;
+   margin-top: 20px;
+   font-weight: 500;
+}
+.container > .right > .box > a > button:hover{
+   border: 1px solid #D3145A;
+   background-color: white;
+   color:#D3145A;
+}
+
+/* COUPON BOX */
+
+.container > .right > .coupon{
+    margin-top: 30px;
+}
+.container > .right > .coupon > input{
+    margin: 15px 10px 15px 0;
+}
+.container > .right > .coupon > button{
+    color: #D3145A;
+}

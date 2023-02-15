@@ -93,9 +93,6 @@ const Orders = () => {
                     )
                 })                
             }
-                
-                               
-            
           </tbody>
          </table>
     </div>

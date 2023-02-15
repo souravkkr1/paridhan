@@ -10,6 +10,7 @@ import Dashboard from '../admin/dashboard/Dashboard'
 import Products from '../admin/products/Products'
 import Users from '../admin/users/Users'
 import Orders from '../admin/orders/Orders'
+import Payment from '../pages/payment/Payment'
 
 const AllRoutes = () => {
   return (
@@ -21,6 +22,7 @@ const AllRoutes = () => {
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/cart" element={<CartPage/>} />
+        <Route path="/payment" element={<Payment/>} />
         <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/products" element={<Products/>} />
         <Route path="/users" element={<Users/>} />

@@ -7,34 +7,6 @@
     width: 90%;
     margin: 50px auto;
 }
-form{
-    /* border: 1px solid red; */
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-    width: 40%;
-    /* border: 1px solid green; */
-    padding: 40px 0;
-    position: fixed;
-    background-color: antiquewhite;
-    height: 100vh;
-}
-input, select, textarea{
-    border: 1px solid  rgb(205, 204, 204);
-    padding: 5px !important;
-    margin-bottom:10px !important ;
-    border-radius: 10px;
-    width: 80%;
-}
-.list{
-    /* border: 1px solid blue; */
-    width: 60%;
-    height: 1000px;
-    position: absolute;
-    right: 0;
-    z-index: -100;
-}
 
 .orderTable {
     width: 100%;

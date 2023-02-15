@@ -1,48 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import style from './home.module.css'
 import {Link} from 'react-router-dom'
 import Navbar from '../../components/navbar/Navbar'
 
-const home = () => {
+const Home = () => {
 
-  const new_arrival=
-    [
-      {
-        img:"https://img3.junaroad.com/uiproducts/17718906/zoom_0-1620383566.jpg",
-        price:999,
-        title:"Product 7",
-        discPrice:399,
-        author:"Sprouted"
-    },
-    {
-        img:"https://img3.junaroad.com/uiproducts/18823368/zoom_0-1670820278.jpg",
-        price:999,
-        title:"Product 8",
-        discPrice:399,
-        author:"Sprouted"
-    },
-    {
-        img:"https://img3.junaroad.com/uiproducts/19147818/zoom_0-1673332950.jpg",
-        price:999,
-        title:"Product 9",
-        discPrice:399,
-        author:"Sprouted"
-    },
-    {
-      img:"https://img3.junaroad.com/uiproducts/18823471/zoom_0-1674018312.jpg",
-      price:999,
-      title:"Product 1",
-      discPrice:399,
-      author:"Sprouted"
-  },
-  {
-      img:"https://img3.junaroad.com/uiproducts/18294842/zoom_0-1647088459.jpg",
-      price:999,
-      title:"Product 2",
-      discPrice:399,
-      author:"Sprouted"
-  }
-    ]
+  const [products, setProducts]= useState([])
+
+  useEffect(()=>{
+    axios
+    .get("http://localhost:8080/products")
+    .then((res)=>{
+    setProducts(res.data);
+    })
+    .catch((err)=> {
+        console.log(err)})
+},[])
+
+console.log(products)
+
+const new_arrival = products.filter((product) =>
+      product.tags.includes("new arrival")
+    );
+
+    console.log(new_arrival)
+
+  // const new_arrival=products && products.filter((product)=>{
+  //   product.tags.includes("new arrival")
+  // })
+ 
+
+  console.log(new_arrival)
   
 
   const women=[
@@ -210,11 +199,11 @@ const men=[
           <h2>NEW ARRIVALS</h2>
           <div className={style.prods}>
           {
-                  new_arrival.map((item)=>{
+                  new_arrival.slice(0, 5).map((item)=>{
                     return(
                       <div className={style.prod_box}>
                         <img src={item.img} alt="" />
-                        <h3>{item.title}</h3>
+                        <h3>{item.name}</h3>
                         <p>₹{item.price}</p>
                       </div>
                     )
@@ -292,4 +281,4 @@ const men=[
   )
 }
 
-export default home
+export default Home

@@ -6,8 +6,8 @@ userRouter.post("/signin")
 userRouter.post("/signup")
 userRouter.get("/allUsers")
 userRouter.get("/profile")
-userRouter.post("/delete/:id")
-userRouter.post("/edit/:id")
+userRouter.delete("/delete/:id")
+userRouter.patch("/edit/:id")
 
 module.exports = {
     userRouter

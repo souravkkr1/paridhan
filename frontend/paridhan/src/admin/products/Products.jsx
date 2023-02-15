@@ -1,261 +1,164 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Nav from '../nav/Nav'
 import style from './products.module.css'
+import axios from 'axios'
+import { useEffect } from 'react'
 
 const Products = () => {
 
-        const prods=[
-            {
-                id:"1",
-                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
-                Name:"Baby shoes",
-                Price:"$20",
-                Offer:"25% OFF",
-                Purchased:"	61",
-                Stock:"	5421E",
-                Status:"ACTIVE",
-                Date:"2021-10-30",
-                Action:""
-            },
-            {
-                id:"2",
-                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
-                Name:"Baby shoes",
-                Price:"$20",
-                Offer:"25% OFF",
-                Purchased:"	61",
-                Stock:"	5421E",
-                Status:"ACTIVE",
-                Date:"2021-10-30",
-                Action:""
-            },
-            {
-                id:"3",
-                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
-                Name:"Baby shoes",
-                Price:"$20",
-                Offer:"25% OFF",
-                Purchased:"	61",
-                Stock:"	5421E",
-                Status:"ACTIVE",
-                Date:"2021-10-30",
-                Action:""
-            },
-            {
-                id:"4",
-                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
-                Name:"Baby shoes",
-                Price:"$20",
-                Offer:"25% OFF",
-                Purchased:"	61",
-                Stock:"	5421E",
-                Status:"ACTIVE",
-                Date:"2021-10-30",
-                Action:""
-            },
-            {
-                id:"5",
-                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
-                Name:"Baby shoes",
-                Price:"$20",
-                Offer:"25% OFF",
-                Purchased:"	61",
-                Stock:"	5421E",
-                Status:"ACTIVE",
-                Date:"2021-10-30",
-                Action:""
-            },
-            {
-                id:"6",
-                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
-                Name:"Baby shoes",
-                Price:"$20",
-                Offer:"25% OFF",
-                Purchased:"	61",
-                Stock:"	5421E",
-                Status:"ACTIVE",
-                Date:"2021-10-30",
-                Action:""
-            },
-            {
-                id:"7",
-                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
-                Name:"Baby shoes",
-                Price:"$20",
-                Offer:"25% OFF",
-                Purchased:"	61",
-                Stock:"	5421E",
-                Status:"ACTIVE",
-                Date:"2021-10-30",
-                Action:""
-            },
-            {
-                id:"8",
-                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
-                Name:"Baby shoes",
-                Price:"$20",
-                Offer:"25% OFF",
-                Purchased:"	61",
-                Stock:"	5421E",
-                Status:"ACTIVE",
-                Date:"2021-10-30",
-                Action:""
-            },
-            {
-                id:"9",
-                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
-                Name:"Baby shoes",
-                Price:"$20",
-                Offer:"25% OFF",
-                Purchased:"	61",
-                Stock:"	5421E",
-                Status:"ACTIVE",
-                Date:"2021-10-30",
-                Action:""
-            },
-            {
-                id:"10",
-                Product:"https://loopinfosol.in/themeforest/ekka-html-v33/ekka-admin/assets/img/products/p1.jpg",
-                Name:"Baby shoes",
-                Price:"$20",
-                Offer:"25% OFF",
-                Purchased:"	61",
-                Stock:"	5421E",
-                Status:"ACTIVE",
-                Date:"2021-10-30",
-                Action:""
-            }
-          ]
+    const initState = {
+        name: "",
+        img: "",
+        price: 0,
+        discPrice: 0,
+        color: "",
+        category: "",
+        tags: "",
+        stocks: 0,
+      };
+
+    const [product, setProduct]= useState(initState);
+    const [prod, setProd]= useState("");
 
 
+    useEffect(()=>{
+        axios
+        .get("http://localhost:8080/products")
+        .then((res)=>{
+            setProd(res.data)})
+        .catch((err)=> {
+            console.log(err)})
+    },[])
+
+    console.log("hello", prod)
+
+
+          const addProduct=(e)=>{
+            e.preventDefault();
+            axios
+            .post("http://localhost:8080/products/add", product)
+            .then((res)=> console.log(res.data))
+            .catch((err)=>{
+                console.log(err)
+            })
+          }
+
+
+          const data = (e) => {
+            const { name, value } = e.target;
+            setProduct((prev) => {
+              return { ...prev, [name]: value };
+            });
+          };
+
+          
   return (
     <>
         <Nav/>
         <div className={style.main}>
             <div className={style.addProd}>
                 <div className={style.container}>
-                    <form>
+                    <form onSubmit={addProduct}>
                             {/* <label>Product Name</label> */}
                             <input
                                 name="name"
-                                //   value={product.name}
-                                //   onChange={(e) => data(e)}
+                                value={product.name}
+                                onChange={(e) => data(e)}
                                 type="text"
                                 placeholder="Product Name"
                             />
 
-                            {/* <label>Product Brand</label> */}
+                            {/* <label>Product Category</label> */}
                             <input
-                                name="brand"
-                                //   value={product.brand}
-                                //   onChange={(e) => data(e)}
+                                name="img"
+                                value={product.img}
+                                onChange={(e) => data(e)}
                                 type="text"
-                                placeholder="Brand"
+                                placeholder="Enter image link"
+                            />
+
+                            {/* <label>Product Price</label> */}
+                            <input
+                                name="price"
+                                value={product.price}
+                                onChange={(e) => data(e)}
+                                type="number"
+                                placeholder="Enter Price"
+                            />
+
+                            {/* <label>Product Price</label> */}
+                            <input
+                                name="discPrice"
+                                value={product.discPrice}
+                                onChange={(e) => data(e)}
+                                type="number"
+                                placeholder="Enter Discounted Price"
+                            />
+
+                            {/* <label>Product Category</label> */}
+                            <input
+                                name="color"
+                                value={product.color}
+                                onChange={(e) => data(e)}
+                                type="text"
+                                placeholder="Product Color"
                             />
 
                             {/* <label>Product Category</label> */}
                             <input
                                 name="category"
-                                //   value={product.category}
-                                //   onChange={(e) => data(e)}
+                                value={product.category}
+                                onChange={(e) => data(e)}
                                 type="text"
                                 placeholder="Category Name"
                             />
 
-                            <label>Product Description</label>
-                            <textarea
-                                //   value={product.description}
-                                //   onChange={(e) => data(e)}
-                                name="description"
-                                id="desc"
-                                cols="20"
-                                rows="5"
-                            ></textarea>
-
-                            <label>Product Color</label>
-                            <select name="color" id="color">
-                            <option selected value="">
-                                Please select one
-                            </option>
-                            <option value="red">Red</option>
-                            <option value="blue">Blue</option>
-                            <option value="orange">Orange</option>
-                            <option value="yellow">Yellow</option>
-                            </select>
-
-                            <label>Product For which gender</label>
-                            <select name="gender" id="gender">
-                            <option selected value="">
-                                Please select one
-                            </option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            </select>
-
                             {/* <label>Product Tags</label> */}
                             <input
-                            //   onChange={(e) => data(e)}
-                            name="tags"
-                            type="text"
-                            placeholder="Tags seperate with comma"
+                                value={product.tags}
+                                onChange={(e) => data(e)}
+                                name="tags"
+                                type="text"
+                                placeholder="Enter tag"
                             />
 
                             {/* <label>Size</label> */}
                             <input
-                            //   onChange={(e) => data(e)}
-                            name="size"
-                            type="text"
-                            placeholder="Size seperate with comma"
+                                value={product.stocks}
+                                onChange={(e) => data(e)}
+                                name="stocks"
+                                type="number"
+                                placeholder="Enter item stock"
                             />
-
-                            {/* <label>Stock you have</label> */}
-                            <input
-                            name="stock"
-                            //   value={product.stock}
-                            //   onChange={(e) => data(e)}
-                            type="number"
-                            placeholder="Stock"
-                            />
-
-                            {/* <label>Price per piece</label> */}
-                            <input
-                            name="price"
-                            //   value={product.price}
-                            //   onChange={(e) => data(e)}
-                            type="number"
-                            placeholder="Price"
-                            />
-                            <input type="submit" value="Add Product" />
+                            <input type="submit" value="Submit" />
                     </form>
                     <div className={style.list}>
                         <table className={style.userTable}>
                         <thead>
                             <tr>
-                                <td>Id</td>
                                 <td>Image</td>
                                 <td>Name</td>
                                 <td>Price</td>
-                                <td>Purchased</td>
+                                <td>Discounted Price</td>
                                 <td>Stock</td>
                                 <td>Action</td>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                prods.map((el)=>{
+                                prod && prod.map((ele)=>{
                                     return(
-                                        <tr key={el.id} >
-                                            <td>{el.id}</td>
-                                            <td><img style={{width:"50px"}} src={el.Product} alt="profile"/></td>
-                                            <td>{el.Name}</td>
-                                            <td>{el.Price}</td>
-                                            <td>{el.Purchased}</td>
-                                            <td>{el.Stock}</td>
+                                        <tr key={ele._id}>
+                                            <td><img src={ele.img} style={{width:"50px"}} alt="profile" /></td>
+                                            <td>{ele.name}</td>
+                                            <td>{ele.price}</td>
+                                            <td>{ele.discPrice}</td>
+                                            <td>{ele.stock}</td>
                                             <td><button>Info</button></td>
                                         </tr>
                                     )
-                                })                
-                            }  
+                                })
+                            }
                         </tbody>
                         </table>
                     </div>

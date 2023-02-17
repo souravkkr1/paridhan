@@ -11,6 +11,7 @@ import {
 
 import { ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons";
 import style from "./navbar.module.css";
+import logo from '../../assets/paridhanLogo.png'
 
 const isAuth=true;
 
@@ -27,23 +28,18 @@ const Navbar = () => {
           />
           <MenuList>
             <MenuItem>
-              <Link to="/all-products?gender=female">
+              <Link to="/all-products/Women">
                 <button>WOMEN</button>
               </Link>
             </MenuItem>
             <MenuItem>
-              <Link to="/all-products?gender=male">
+              <Link to="/all-products/Men">
                 <button>MEN</button>
               </Link>
             </MenuItem>
             <MenuItem>
-              <Link to="/all-products?gender=kids">
+              <Link to="/all-products/Kids">
                 <button>KIDS</button>
-              </Link>
-            </MenuItem>
-            <MenuItem>
-              <Link to="/">
-                <button>HOME</button>
               </Link>
             </MenuItem>
             <MenuItem>
@@ -56,22 +52,18 @@ const Navbar = () => {
       </div>
       <div className={style.left}>
         <Link to="/">
-          {/* <img src={logo} alt="" /> */}
-          <h1>PARIDHAN</h1>
+          <img src={logo} alt="" />
         </Link>
         <div className={style.menu}>
           <ul>
             <li>
-              <Link to="/all-products?gender=female">WOMEN</Link>
+              <Link to="/all-products/Women">WOMEN</Link>
             </li>
             <li>
-              <Link to="/all-products?gender=male">MEN</Link>
+              <Link to="/all-products/Men">MEN</Link>
             </li>
             <li>
-              <Link to="/all-products?gender=kids">KIDS</Link>
-            </li>
-            <li>
-              <Link to="/">HOME</Link>
+              <Link to="/all-products/Kids">KIDS</Link>
             </li>
             <li>
               <Link to="/offer" className={style.offer}>

@@ -4,20 +4,34 @@ const { ProductModel } = require("../models/product.model")
 
 // Get all products
 productRouter.get('/', async (req, res) => {
+    const { category } = req.query
+    console.log(category)
     try {
-        const products = await ProductModel.find();
-        res.json(products);
+        if (category != undefined) {
+            const products = await ProductModel.find({ category });
+            res.json(products);
+        } else {
+            const products = await ProductModel.find();
+            res.json(products);
+        }
     } catch (err) {
         console.log(err)
         res.status(500).json({ "msg": "Something went wrong" })
     }
 });
 
-
 // Get single product by id
-// productRouter.get('/:id', getProduct, (req, res) => {
-
-// });
+productRouter.get('/:id', async (req, res) => {
+    const { id } = req.params
+    try {
+        const products = await ProductModel.findOne({ _id: id });
+        res.send(products);
+        console.log(products)
+    } catch (err) {
+        console.log(err)
+        res.status(500).json({ "msg": "Something went wrong" })
+    }
+});
 
 
 // Create product
@@ -35,15 +49,24 @@ productRouter.post('/add', async (req, res) => {
 });
 
 
+
 // Update product by id
 // router.patch('//:id', getProduct, async (req, res) => {
 
 // });
 
 // Delete product by id
-// router.delete('//:id', getProduct, async (req, res) => {
+productRouter.delete('/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        await ProductModel.findByIdAndDelete({ _id: id })
+        res.send("Successfull deleted")
+    } catch (err) {
+        console.log(err)
+        res.send({ "msg": "Something went wrong" })
+    }
 
-// });
+});
 
 
 module.exports = {

@@ -3,6 +3,8 @@ import axios from 'axios'
 import style from './home.module.css'
 import {Link} from 'react-router-dom'
 import Navbar from '../../components/navbar/Navbar'
+// import ProdBox from '../../components/prodBox/ProdBox'
+import HomeProds from '../../components/homeProds/HomeProds'
 
 const Home = () => {
 
@@ -10,7 +12,7 @@ const Home = () => {
 
   useEffect(()=>{
     axios
-    .get("http://localhost:8080/products")
+    .get("https://odd-lime-crayfish-hat.cyclic.app/products")
     .then((res)=>{
     setProducts(res.data);
     })
@@ -20,18 +22,16 @@ const Home = () => {
 
 console.log(products)
 
-const new_arrival = products.filter((product) =>
-      product.tags.includes("new arrival")
-    );
+// const new_arrival = 
 
-    console.log(new_arrival)
+    // console.log(new_arrival)
 
   // const new_arrival=products && products.filter((product)=>{
   //   product.tags.includes("new arrival")
   // })
  
 
-  console.log(new_arrival)
+  // console.log(new_arrival)
   
 
   const women=[
@@ -155,36 +155,38 @@ const men=[
     <Navbar/>
     <div className={style.main}>
       <div className={style.banner}>
-        <div className={style.content}>
+        {/* <div className={style.content}>
           <h1>Welcome to Paridhan</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, dolores? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore, maiores.</p>
-        </div>
+          <p>Welcome to our one-stop-shop for all your fashion and lifestyle needs - browse our collections now! Shop the latest trends and discover great deals at our online store!</p>
+        </div> */}
       </div>
 
       {/* Featured Product Section */}
 
       <div className={style.featured}>
         <div className={style.container}>
-          <h2>FEATURED PRODUCTS</h2>
+          <h2>PARIDHAN FEATURING</h2>
           <div className={style.feat_prods}>
             <div className={style.left}>
               
-                <div>
-                  
-                </div>
+                <Link to="/offers">
+                  <div>
+
+                  </div>
+                </Link>
               
             </div>
             <div className={style.right}>
-              <div>
+              <Link to="/all-products/Women">
       
-              </div>
+              </Link>
               <div>
-                <div>
+                <Link to="/all-products/Men">
                   <img src="https://pbs.twimg.com/media/E1plYHMUUAIrR2g.jpg" alt="" />
-                </div>
-                <div>
+                </Link>
+                <Link to="/all-products/Kids">
                   <img src="https://www.nandanigarments.com/image/banner%2013.jpg" alt="" />
-                </div>
+                </Link>
               </div>
               
             </div>
@@ -194,86 +196,42 @@ const men=[
 
       {/* New Arrivals */}
 
-      <div className={style.new_arrivals}>
-        <div className={style.container}>
-          <h2>NEW ARRIVALS</h2>
-          <div className={style.prods}>
-          {
-                  new_arrival.slice(0, 5).map((item)=>{
-                    return(
-                      <div className={style.prod_box}>
-                        <img src={item.img} alt="" />
-                        <h3>{item.name}</h3>
-                        <p>₹{item.price}</p>
-                      </div>
-                    )
-                  })
-                }
-          </div>
-        </div>
+      <div className={style.homeProds}>
+        <HomeProds
+        products={products}
+        heading="NEW ARRIVALS"
+        tag="new arrival"
+        />
       </div>
 
       {/* WOMEN */}
 
-      <div className={style.women}>
-        <div className={style.container}>
-          <h2>WOMEN</h2>
-          <div className={style.prods}>
-                {
-                  women.map((item)=>{
-                    return(
-                      <div className={style.prod_box}>
-                        <img src={item.img} alt="" />
-                        <h3>{item.title}</h3>
-                        <p>₹{item.price}</p>
-                      </div>
-                    )
-                  })
-                }
-          </div>
-        </div>
+      <div className={style.homeProds}>
+        <HomeProds
+        products={products}
+        heading="WOMEN"
+        tag="women"
+        />
       </div>
 
       {/* Men */}
 
-      <div className={style.men}>
-        <div className={style.container}>
-          <h2>MEN</h2>
-          <div className={style.prods}>
-          {
-                  men.map((item)=>{
-                    return(
-                      <div className={style.prod_box}>
-                        <img src={item.img} alt="" />
-                        <h3>{item.title}</h3>
-                        <p>₹{item.price}</p>
-                      </div>
-                    )
-                  })
-                }
-          </div>
-        </div>
+      <div className={style.homeProds}>
+        <HomeProds
+        products={products}
+        heading="MEN"
+        tag="men"
+        />
       </div>
 
       {/* Kids */}
 
-      <div className={style.kids}>
-        <div className={style.container}>
-          <h2>KIDS</h2>
-          <div className={style.prods}>
-          {
-                  kids.map((item)=>{
-                    return(
-                      <div className={style.prod_box}>
-                        <img src={item.img} alt="" />
-                        <h3>{item.title}</h3>
-                        <p>₹{item.price}</p>
-                      </div>
-                    )
-                  })
-                }
-          </div>
-        </div>
+      <div className={style.homeProds}>
+        <HomeProds
+        products={products}
+        heading="KIDS"
+        tag="kids"
+        />
       </div>
       
     </div>

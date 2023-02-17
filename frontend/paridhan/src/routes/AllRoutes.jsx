@@ -17,8 +17,8 @@ const AllRoutes = () => {
     <div>
       <Routes>
         <Route path="/" element={<Home/>} />
-        <Route path="/all-products" element={<AllProducts/>} />
-        <Route path="/singalproduct/:id" element={<SingleProduct />}/>
+        <Route path="/all-products/:category" element={<AllProducts/>} />
+        <Route path="/singleproduct/:id" element={<SingleProduct />}/>
         <Route path="/login" element={<Login/>} />
         <Route path="/signup" element={<Signup/>} />
         <Route path="/cart" element={<CartPage/>} />

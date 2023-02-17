@@ -33,10 +33,22 @@ const Products = () => {
         stocks: null,
       };
 
+    const editState = {
+        name: "",
+        img: "",
+        price: null,
+        discPrice: null,
+        color: "",
+        category: "",
+        tags: "",
+        stocks: null,
+      };
+
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [prod, setProd]= useState("");
     const [product, setProduct]= useState(initState);
-    const [edit, setEdit]= useState(initState);
+    const [edit, setEdit]= useState(editState);
+    const [editID, setEditID]=useState("");
 
     
 
@@ -65,30 +77,45 @@ const Products = () => {
         });
       };
 
-
     useEffect(()=>{
+       getData();
+    },[])
+
+    const getData=()=>{
         axios
         .get("https://odd-lime-crayfish-hat.cyclic.app/products")
         .then((res)=>{
             setProd(res.data)})
         .catch((err)=> {
             console.log(err)})
-    },[])
+    }
 
           const handleDelete=(id)=>{
                 axios
                 .delete(`http://localhost:8080/products/${id}`)
+                .then((res)=> getData())
           }
 
-          const handleEdit=(e,id)=>{
-            e.preventDefault();
-            const payload=editData;
+          const handleEdit=(id)=>{
+            setEditID(id);
                 axios
-                .patch(`http://localhost:8080/products/${id}`, payload)
-                .then((res)=> console.log(res.data))
+                .get(`http://localhost:8080/products/${id}`)
+                .then(res=> setEdit(res.data))
+                .catch(err=>console.log(err))
+                onOpen()
+          }
+
+          const postEdit=(e)=>{
+            e.preventDefault();
+            const payload=edit;
+                axios
+                .patch(`http://localhost:8080/products/${editID}`, payload)
+                .then((res)=> getData())
+                .then((res)=> onClose())
                 .catch((err)=>{
                     console.log(err)
                 })
+            // console.log("id:",editID)
           }
 
           
@@ -202,13 +229,24 @@ const Products = () => {
                                             <td>{ele.stocks}</td>
                                             <td className={style.action}>
                                                 <div>
-                                                <BiEdit onClick={onOpen} />
+                                                <BiEdit onClick={()=>handleEdit(ele._id)} />
                                                 <RiDeleteBin2Line onClick={()=>handleDelete(ele._id)}/>
                                                 <Link to={`/singleproduct/${ele._id}`}><AiOutlineEye/></Link>
                                                 </div>
                                             </td>
                                         </tr>
-                                        <Modal isOpen={isOpen} onClose={onClose}>
+
+                                    </>
+                                    )
+                                })
+                            }
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div className={style.editPop}>
+                    <Modal isOpen={isOpen} onClose={onClose}>
                                         <ModalOverlay />
                                         <ModalContent>
                                             <ModalHeader>Modal Title</ModalHeader>
@@ -218,7 +256,7 @@ const Products = () => {
                                                         {/* <label>Product Name</label> */}
                                                         <input
                                                             name="name"
-                                                            value={ele.name}
+                                                            value={edit.name}
                                                             onChange={(e) => editData(e)}
                                                             type="text"
                                                             placeholder="Product Name"
@@ -227,7 +265,7 @@ const Products = () => {
                                                         {/* <label>Product Category</label> */}
                                                         <input
                                                             name="img"
-                                                            value={ele.img}
+                                                            value={edit.img}
                                                             onChange={(e) => editData(e)}
                                                             type="text"
                                                             placeholder="Enter image link"
@@ -236,7 +274,7 @@ const Products = () => {
                                                         {/* <label>Product Price</label> */}
                                                         <input
                                                             name="price"
-                                                            value={ele.price}
+                                                            value={edit.price}
                                                             onChange={(e) => editData(e)}
                                                             type="number"
                                                             placeholder="Enter Price"
@@ -245,7 +283,7 @@ const Products = () => {
                                                         {/* <label>Product Price</label> */}
                                                         <input
                                                             name="discPrice"
-                                                            value={ele.discPrice}
+                                                            value={edit.discPrice}
                                                             onChange={(e) => editData(e)}
                                                             type="number"
                                                             placeholder="Enter Discounted Price"
@@ -254,7 +292,7 @@ const Products = () => {
                                                         {/* <label>Product Category</label> */}
                                                         <input
                                                             name="color"
-                                                            value={ele.color}
+                                                            value={edit.color}
                                                             onChange={(e) => editData(e)}
                                                             type="text"
                                                             placeholder="Product Color"
@@ -263,7 +301,7 @@ const Products = () => {
                                                         {/* <label>Product Category</label> */}
                                                         <input
                                                             name="category"
-                                                            value={ele.category}
+                                                            value={edit.category}
                                                             onChange={(e) => editData(e)}
                                                             type="text"
                                                             placeholder="Category Name"
@@ -271,7 +309,7 @@ const Products = () => {
 
                                                         {/* <label>Product Tags</label> */}
                                                         <input
-                                                            value={ele.tags}
+                                                            value={edit.tags}
                                                             onChange={(e) => editData(e)}
                                                             name="tags"
                                                             type="text"
@@ -280,7 +318,7 @@ const Products = () => {
 
                                                         {/* <label>Size</label> */}
                                                         <input
-                                                            value={ele.stocks}
+                                                            value={edit.stocks}
                                                             onChange={(e) => editData(e)}
                                                             name="stocks"
                                                             type="number"
@@ -293,21 +331,10 @@ const Products = () => {
                                             <Button colorScheme='red' mr={3} onClick={onClose}>
                                                 Close
                                             </Button>
-                                            <Button colorScheme='green' onClick={()=>handleEdit(ele._id)} >Edit</Button>
+                                            <Button colorScheme='green' onClick={postEdit}>Edit</Button>
                                             </ModalFooter>
                                         </ModalContent>
-                                        </Modal>
-                                    </>
-                                    )
-                                })
-                            }
-                        </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div className={style.editPop}>
-                                       
+                                        </Modal>          
             </div>
         </div>
     </>

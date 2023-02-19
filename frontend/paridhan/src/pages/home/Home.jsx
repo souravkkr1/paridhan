@@ -5,22 +5,32 @@ import {Link} from 'react-router-dom'
 import Navbar from '../../components/navbar/Navbar'
 // import ProdBox from '../../components/prodBox/ProdBox'
 import HomeProds from '../../components/homeProds/HomeProds'
+import { useDispatch, useSelector } from 'react-redux'
+import store from '../../redux/store'
+import { getProducts } from '../../redux/productReducer/action'
 
 const Home = () => {
 
-  const [products, setProducts]= useState([])
+  const {products} = useSelector(store=>store.ProductReducer)
+  const dispatch= useDispatch();
 
   useEffect(()=>{
-    axios
-    .get("https://odd-lime-crayfish-hat.cyclic.app/products")
-    .then((res)=>{
-    setProducts(res.data);
-    })
-    .catch((err)=> {
-        console.log(err)})
-},[])
+    dispatch(getProducts())
+    // console.log("product:", products)
+  },[dispatch])
+  // const [products, setProducts]= useState([])
 
-console.log(products)
+//   useEffect(()=>{
+//     axios
+//     .get("http://localhost:8080/products")
+//     .then((res)=>{
+//     setProducts(res.data);
+//     })
+//     .catch((err)=> {
+//         console.log(err)})
+// },[])
+
+// console.log(products)
 
 // const new_arrival = 
 
@@ -32,123 +42,6 @@ console.log(products)
  
 
   // console.log(new_arrival)
-  
-
-  const women=[
-    {
-        img:"https://img3.junaroad.com/uiproducts/18823471/zoom_0-1674018312.jpg",
-        price:999,
-        title:"Product 1",
-        discPrice:399,
-        author:"Sprouted"
-    },
-    {
-        img:"https://img3.junaroad.com/uiproducts/18294842/zoom_0-1647088459.jpg",
-        price:999,
-        title:"Product 2",
-        discPrice:399,
-        author:"Sprouted"
-    },
-    {
-        img:"https://img3.junaroad.com/uiproducts/17611516/zoom_0-1616215900.jpg",
-        price:999,
-        title:"Product 3",
-        discPrice:399,
-        author:"Sprouted"
-    },
-    {
-        img:"https://img3.junaroad.com/uiproducts/18532551/zoom_0-1663862702.jpg",
-        price:999,
-        title:"Product 4",
-        discPrice:399,
-        author:"Sprouted"
-    },
-    {
-        img:"https://img3.junaroad.com/uiproducts/18537395/zoom_0-1664045976.jpg",
-        price:999,
-        title:"Product 5",
-        discPrice:399,
-        author:"Sprouted"
-    },
-]
-
-const men=[
-
-{
-        img:"https://img3.junaroad.com/uiproducts/17718906/zoom_0-1620383566.jpg",
-        price:999,
-        title:"Product 7",
-        discPrice:399,
-        author:"Sprouted"
-    },
-    {
-        img:"https://img3.junaroad.com/uiproducts/18823368/zoom_0-1670820278.jpg",
-        price:999,
-        title:"Product 8",
-        discPrice:399,
-        author:"Sprouted"
-    },
-    {
-        img:"https://img3.junaroad.com/uiproducts/19147818/zoom_0-1673332950.jpg",
-        price:999,
-        title:"Product 9",
-        discPrice:399,
-        author:"Sprouted"
-    },
-    {
-      img:"https://img3.junaroad.com/uiproducts/18823471/zoom_0-1674018312.jpg",
-      price:999,
-      title:"Product 1",
-      discPrice:399,
-      author:"Sprouted"
-  },
-  {
-      img:"https://img3.junaroad.com/uiproducts/18294842/zoom_0-1647088459.jpg",
-      price:999,
-      title:"Product 2",
-      discPrice:399,
-      author:"Sprouted"
-  }
-    ]
-
-    const kids= [
-      {
-          img:"https://img3.junaroad.com/uiproducts/18823471/zoom_0-1674018312.jpg",
-          price:999,
-          title:"Product 1",
-          discPrice:399,
-          author:"Sprouted"
-      },
-      {
-          img:"https://img3.junaroad.com/uiproducts/18294842/zoom_0-1647088459.jpg",
-          price:999,
-          title:"Product 2",
-          discPrice:399,
-          author:"Sprouted"
-      },
-      {
-          img:"https://img3.junaroad.com/uiproducts/17611516/zoom_0-1616215900.jpg",
-          price:999,
-          title:"Product 3",
-          discPrice:399,
-          author:"Sprouted"
-      },
-      {
-          img:"https://img3.junaroad.com/uiproducts/18532551/zoom_0-1663862702.jpg",
-          price:999,
-          title:"Product 4",
-          discPrice:399,
-          author:"Sprouted"
-      },
-      {
-          img:"https://img3.junaroad.com/uiproducts/18537395/zoom_0-1664045976.jpg",
-          price:999,
-          title:"Product 5",
-          discPrice:399,
-          author:"Sprouted"
-      },
-  ]
-  
 
   return (
     <>

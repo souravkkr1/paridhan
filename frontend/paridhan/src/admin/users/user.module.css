@@ -38,3 +38,8 @@
     background-color:#D3145A;
     color:white
   }
+  .actions{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

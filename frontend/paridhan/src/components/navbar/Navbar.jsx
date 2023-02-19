@@ -12,10 +12,14 @@ import {
 import { ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons";
 import style from "./navbar.module.css";
 import logo from '../../assets/paridhanLogo.png'
-
-const isAuth=true;
+import { useDispatch, useSelector } from 'react-redux';
+import { signout } from '../../redux/authReducer/action';
 
 const Navbar = () => {
+
+  const { isAuth, user } = useSelector((store) => store.AuthReducer);
+  const dispatch = useDispatch();
+
   return (
     <div className={style.navbar}>
        <div className={style.ham}>
@@ -79,12 +83,12 @@ const Navbar = () => {
         <Link to={"/cart"}>CART</Link>
         <Menu>
           <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-            {isAuth ? "SOURAV" : `PROFILE`}
+            {isAuth ? user.name : `PROFILE`}
           </MenuButton>
           {!isAuth ? (
             <MenuList>
               <MenuItem>
-                <Link to="/signin">
+                <Link to="/login">
                   <button>Sign In</button>
                 </Link>
               </MenuItem>
@@ -97,7 +101,7 @@ const Navbar = () => {
           ) : (
             <MenuList>
               <MenuItem>
-                <button>Sign out</button>
+                <button onClick={() => dispatch(signout())}>Sign out</button>
               </MenuItem>
             </MenuList>
           )}

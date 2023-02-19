@@ -6,59 +6,26 @@ import {Link, useParams} from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import HomeProds from '../../components/homeProds/HomeProds'
-
-// const prod=[
-//   {
-//       img:"https://img3.junaroad.com/uiproducts/18823471/zoom_0-1674018312.jpg",
-//       name:"Product 1",
-//       price:999,
-//       discPrice:399,
-//       size:[28, 30, 32, 34, 36, 38],
-//       author:"Sprouted"
-//   }
-// ]
-
-// const moreLikeThis=[
-//   {
-//     img:"https://img3.junaroad.com/uiproducts/18823471/zoom_0-1674018312.jpg",
-//     name:"Product 1",
-//     price:999,
-//     discPrice:399,
-//     author:"Sprouted"
-// },
-// {
-//     img:"https://img3.junaroad.com/uiproducts/18294842/zoom_0-1647088459.jpg",
-//     name:"Product 2",
-//     price:999,
-//     discPrice:399,
-//     author:"Sprouted"
-// },
-// {
-//     img:"https://img3.junaroad.com/uiproducts/17611516/zoom_0-1616215900.jpg",
-//     name:"Product 3",
-//     price:999,
-//     discPrice:399,
-//     author:"Sprouted"
-// },
-// {
-//     img:"https://img3.junaroad.com/uiproducts/18532551/zoom_0-1663862702.jpg",
-//     name:"Product 4",
-//     price:999,
-//     discPrice:399,
-//     author:"Sprouted"
-// }
-// ]
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 const SingleProduct = () => {
+  const navigate= useNavigate();
+  const { isAuth } = useSelector((store) => store.AuthReducer);
+  console.log(isAuth)
 
+  const {id}=useParams();
+
+  const [prodID, setProdID]=useState(id);
+  const [quantity, setQuantity]=useState(1);
   const [singleProduct, setSingleProduct] = useState({});
   const [products, setProducts] = useState([]);
-  const {id}=useParams();
 
   useEffect(()=>{
     getMoreLike()
     axios
-    .get(`https://odd-lime-crayfish-hat.cyclic.app/products/${id}`)
+    .get(`http://localhost:8080/products/${id}`)
     .then((res)=>{
         setSingleProduct(res.data)})
     .catch((err)=> {
@@ -76,10 +43,28 @@ const SingleProduct = () => {
     }
     console.log(products)
 
-    // let check= products && products.filter((product) =>
-    // product.tags.includes(singleProduct.tags)).slice(0, 4)
+   const  handleAddTocart=(id)=>{
 
-    // console.log("check:",check)
+    if(!isAuth){
+      navigate("/login")
+        // <Navigate to={"/login"} />
+      }else{
+          const payload={prodID, quantity}
+          console.log(payload)
+          axios.
+          post("http://localhost:8080/cart", payload,{ 
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': localStorage.getItem('token')
+          }
+        })
+          .then(res=>console.log(res))
+          .catch(err=>console.log(err))
+      }
+    }
+      
+
+   console.log(prodID, quantity)
 
   return (
     <>
@@ -102,7 +87,16 @@ const SingleProduct = () => {
             <p>34</p>
             <p>36</p>
           </div>
-          <Link to="/cart"><button>add to cart</button></Link>
+          <div className={style.quantit}>
+            <select name="quantity" id="quantity" value={quantity} onChange={(e)=>setQuantity(e.target.value)}>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <button onClick={()=>handleAddTocart(singleProduct._id)}>add to cart</button>
           <p className={style.desc}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero tempore cupiditate ea repellat quos enim nostrum eligendi eum nemo corporis.
           </p>

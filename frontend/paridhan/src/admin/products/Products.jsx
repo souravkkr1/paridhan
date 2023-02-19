@@ -57,6 +57,7 @@ const Products = () => {
         axios
         .post("http://localhost:8080/products/add", product)
         .then((res)=> console.log(res.data))
+        .then((res)=> getData())
         .catch((err)=>{
             console.log(err)
         })
@@ -83,7 +84,7 @@ const Products = () => {
 
     const getData=()=>{
         axios
-        .get("https://odd-lime-crayfish-hat.cyclic.app/products")
+        .get("http://localhost:8080/products")
         .then((res)=>{
             setProd(res.data)})
         .catch((err)=> {

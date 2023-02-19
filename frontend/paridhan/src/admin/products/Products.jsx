@@ -55,7 +55,7 @@ const Products = () => {
     const addProduct=(e)=>{
         e.preventDefault();
         axios
-        .post("http://localhost:8080/products/add", product)
+        .post(`${process.env.REACT_APP_API_ENDPOINT}/products/add`, product)
         .then((res)=> console.log(res.data))
         .then((res)=> getData())
         .catch((err)=>{
@@ -84,7 +84,7 @@ const Products = () => {
 
     const getData=()=>{
         axios
-        .get("http://localhost:8080/products")
+        .get(`${process.env.REACT_APP_API_ENDPOINT}/products`)
         .then((res)=>{
             setProd(res.data)})
         .catch((err)=> {
@@ -93,14 +93,14 @@ const Products = () => {
 
           const handleDelete=(id)=>{
                 axios
-                .delete(`http://localhost:8080/products/${id}`)
+                .delete(`${process.env.REACT_APP_API_ENDPOINT}/products/${id}`)
                 .then((res)=> getData())
           }
 
           const handleEdit=(id)=>{
             setEditID(id);
                 axios
-                .get(`http://localhost:8080/products/${id}`)
+                .get(`${process.env.REACT_APP_API_ENDPOINT}/products/${id}`)
                 .then(res=> setEdit(res.data))
                 .catch(err=>console.log(err))
                 onOpen()
@@ -110,7 +110,7 @@ const Products = () => {
             e.preventDefault();
             const payload=edit;
                 axios
-                .patch(`http://localhost:8080/products/${editID}`, payload)
+                .patch(`${process.env.REACT_APP_API_ENDPOINT}/products/${editID}`, payload)
                 .then((res)=> getData())
                 .then((res)=> onClose())
                 .catch((err)=>{

@@ -33,7 +33,7 @@ const CartPage = () => {
   // },[update])
 
   useEffect(()=>{
-    fetch("http://localhost:8080/cart/items",{
+    fetch(`${process.env.REACT_APP_API_ENDPOINT}/cart/items`,{
         headers:{
             "Authorization": localStorage.getItem("token")
         }

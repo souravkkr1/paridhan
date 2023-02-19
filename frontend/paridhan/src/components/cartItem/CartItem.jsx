@@ -17,7 +17,7 @@ const CartItem = ({name, price, discPrice, img, size, color, id, qty, update} ) 
       quantity:quantity
     }
         axios
-        .patch(`http://localhost:8080/cart/items/${id}`, payload, { 
+        .patch(`${process.env.REACT_APP_API_ENDPOINT}/cart/items/${id}`, payload, { 
           headers: {
             'Content-Type': 'application/json',
             'Authorization': localStorage.getItem('token')
@@ -32,7 +32,7 @@ const CartItem = ({name, price, discPrice, img, size, color, id, qty, update} ) 
 
   const handleDelete=()=>{
         axios
-        .delete(`http://localhost:8080/cart/items/${id}`,{ 
+        .delete(`${process.env.REACT_APP_API_ENDPOINT}/cart/items/${id}`,{ 
           headers: {
             'Content-Type': 'application/json',
             'Authorization': localStorage.getItem('token')

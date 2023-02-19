@@ -16,7 +16,7 @@ let getProductsFailure = () => {
 const getProducts = () => (dispatch) => {
     dispatch(getProductsRequest());
     axios
-        .get(`http://localhost:8080/products`)
+        .get(`${process.env.REACT_APP_API_ENDPOINT}/products`)
         .then((res) => {
             console.log(res.data);
             dispatch(getProductsSuccess(res.data));
@@ -30,7 +30,7 @@ const getProducts = () => (dispatch) => {
 const getProductsByCategory = (category) => (dispatch) => {
     dispatch(getProductsRequest());
     axios
-        .get(`http://localhost:8080/products?category=${category}`)
+        .get(`${process.env.REACT_APP_API_ENDPOINT}/products?category=${category}`)
         .then((res) => {
             console.log("category:", res.data);
             dispatch(getProductsSuccess(res.data));
@@ -58,7 +58,7 @@ let addProductsFailure = () => {
 const addProducts = () => (dispatch) => {
     dispatch(addProductsRequest());
     axios
-        .get(`${process.env.API_ENDPOINT}/products`)
+        .get(`${process.env.REACT_APP_API_ENDPOINT}/products`)
         .then((res) => {
             console.log(res.data);
             dispatch(addProductsSuccess(res.data));

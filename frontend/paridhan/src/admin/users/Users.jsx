@@ -16,7 +16,7 @@ const Users = () => {
   
   const getUser=()=>{
     axios
-    .get("http://localhost:8080/user")
+    .get(`${process.env.REACT_APP_API_ENDPOINT}/user`)
     .then(res=> setUser(res.data))
     .catch(err=>console.log(err))
   }
@@ -31,7 +31,7 @@ const Users = () => {
 
   const handleDelete=(id)=>{
     axios
-    .delete(`http://localhost:8080/user/delete/${id}`)
+    .delete(`${process.env.REACT_APP_API_ENDPOINT}/user/delete/${id}`)
     .then(res=> getUser())
     .catch(err=>console.log(err))
   }

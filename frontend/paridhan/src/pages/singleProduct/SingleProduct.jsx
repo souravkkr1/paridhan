@@ -25,7 +25,7 @@ const SingleProduct = () => {
   useEffect(()=>{
     getMoreLike()
     axios
-    .get(`http://localhost:8080/products/${id}`)
+    .get(`${process.env.REACT_APP_API_ENDPOINT}/products/${id}`)
     .then((res)=>{
         setSingleProduct(res.data)})
     .catch((err)=> {
@@ -33,15 +33,19 @@ const SingleProduct = () => {
 
   },[id])
 
+
+  console.log("check:", singleProduct)
+
   const getMoreLike=()=>{
     axios
-    .get(`http://localhost:8080/products`)
+    .get(`${process.env.REACT_APP_API_ENDPOINT}/products`)
     .then((res)=>{
         setProducts(res.data)})
     .catch((err)=> {
         console.log(err)})
     }
-    console.log(products)
+    
+
 
    const  handleAddTocart=(id)=>{
 
@@ -52,7 +56,7 @@ const SingleProduct = () => {
           const payload={prodID, quantity}
           console.log(payload)
           axios.
-          post("http://localhost:8080/cart", payload,{ 
+          post(`${process.env.REACT_APP_API_ENDPOINT}/cart`, payload,{ 
           headers: {
             'Content-Type': 'application/json',
             'Authorization': localStorage.getItem('token')

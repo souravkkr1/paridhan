@@ -4,7 +4,7 @@ import * as types from "./actionTypes";
 
 
 const signup = (payload) => (dispatch) => {
-    const signupURL = `http://localhost:8080/user/signup`;
+    const signupURL = `${process.env.REACT_APP_API_ENDPOINT}/user/signup`;
     dispatch({ type: types.LOGIN_REQUEST });
     try {
         axios
@@ -23,7 +23,7 @@ const signup = (payload) => (dispatch) => {
 
 
 const signin = (payload) => (dispatch) => {
-    const signinURL = `http://localhost:8080/user/signin`;
+    const signinURL = `${process.env.REACT_APP_API_ENDPOINT}/user/signin`;
     dispatch({ type: types.LOGIN_REQUEST });
     try {
         axios

@@ -21,7 +21,7 @@ const reducer = (productState = initialState, action) => {
             return productState
     }
 
-    
+
 }
 
 export { reducer }

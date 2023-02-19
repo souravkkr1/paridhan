@@ -43,6 +43,8 @@ const Home = () => {
 
   // console.log(new_arrival)
 
+  console.log("end:", process.env.REACT_APP_API_ENDPOINT)
+
   return (
     <>
     <Navbar/>

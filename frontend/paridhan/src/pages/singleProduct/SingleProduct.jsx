@@ -17,12 +17,13 @@ const SingleProduct = () => {
 
   const {id}=useParams();
 
-  const [prodID, setProdID]=useState(id);
+  const [prodID, setProdID]=useState("");
   const [quantity, setQuantity]=useState(1);
   const [singleProduct, setSingleProduct] = useState({});
   const [products, setProducts] = useState([]);
 
   useEffect(()=>{
+    setProdID(id)
     getMoreLike()
     axios
     .get(`${process.env.REACT_APP_API_ENDPOINT}/products/${id}`)
@@ -100,7 +101,7 @@ const SingleProduct = () => {
               <option value="5">5</option>
             </select>
           </div>
-          <button onClick={()=>handleAddTocart(singleProduct._id)}>add to cart</button>
+          <button onClick={()=>handleAddTocart(id)}>add to cart</button>
           <p className={style.desc}>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero tempore cupiditate ea repellat quos enim nostrum eligendi eum nemo corporis.
           </p>

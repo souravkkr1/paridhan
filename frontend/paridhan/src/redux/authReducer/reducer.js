@@ -2,11 +2,11 @@
 import * as types from "./actionTypes";
 
 const initialState = {
-  isAuth: false,
+  isAuth: localStorage.getItem("token") ? true : false,
   token: "",
   isLoading: false,
   isError: false,
-  user: {},
+  user: localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,7 +28,9 @@ const reducer = (state = initialState, action) => {
     case types.LOGIN_FAILURE:
       return { ...state, isLoading: false, isError: true };
     case types.LOGOUT_REQUEST:
-      return initialState;
+      localStorage.removeItem("token")
+      localStorage.removeItem("user")
+      return { ...initialState, isAuth: false, users: {}, token: "" };
     default:
       return state;
   }

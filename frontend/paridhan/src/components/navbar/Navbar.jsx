@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {
   Button,
   IconButton,
@@ -19,6 +19,7 @@ const Navbar = () => {
 
   const { isAuth, user } = useSelector((store) => store.AuthReducer);
   const dispatch = useDispatch();
+  const navigate=useNavigate()
 
   return (
     <div className={style.navbar}>
@@ -101,7 +102,10 @@ const Navbar = () => {
           ) : (
             <MenuList>
               <MenuItem>
-                <button onClick={() => dispatch(signout())}>Sign out</button>
+                <button onClick={() => {
+                  dispatch(signout())
+                  navigate("/")
+                  }}>Sign out</button>
               </MenuItem>
             </MenuList>
           )}

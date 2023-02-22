@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./prodBox.module.css";
 
-const ProdBox = ({ price, brand, name, img, discPrice }) => {
+const ProdBox = ({ price, name, img, discPrice }) => {
   const percent= Math.round(((price-discPrice)/price)*100)
   // const img = `https://via.placeholder.com/350x200`;
   return (

@@ -10,9 +10,14 @@ const Payment = () => {
     <div className={style.main}>
       <div className={style.container}>
         <div className={style.left}>
-          <h2>Shipping Information</h2>
+          <h2>Shipping information</h2>
           <form>
-            <p>First Name:</p><input type="text" />
+              <input type="text" name="first-name" placeholder='First Name'/>
+              <input type="text" name="last-name" placeholder='Last Name'/>
+              <input type="text" name="address" placeholder='Address'/>
+              <input type="text" name="city" placeholder='City'/>
+              <input type="text" name="pincode" placeholder='Pincode'/>
+              <input type="submit" value="Submit" />
           </form>
         </div>
 

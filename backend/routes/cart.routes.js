@@ -16,6 +16,7 @@ cartRouter.post("/", async (req, res) => {
         res.send({ "msg": "Something went wrong" })
     }
 })
+
 cartRouter.get("/items", async (req, res) => {
     const user = req.body.userID
     console.log("ls:", user)

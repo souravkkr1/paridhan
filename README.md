@@ -225,6 +225,7 @@ Get a user's shopping cart.
    "createdAt": 2023-02-19T11:04:09.259+00:00
    "updatedAt": 2023-02-19T11:04:09.259+00:00
 }
+```
 
 <h2>Products</h2>
 `POST /orders`

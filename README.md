@@ -108,7 +108,7 @@ Delete any users by _Id
 
 <h2>Products</h2>
 `GET /products`
-Get a list of all available products.
+<p>Get a list of all available products.</p>
 
 <h4>Response Body</h4>
 
@@ -229,4 +229,5 @@ Get a user's shopping cart.
 
 <h2>Products</h2>
 `POST /orders`
-Place an order for a user's shopping cart.
+<p>Place an order for a user's shopping cart.</p>
+

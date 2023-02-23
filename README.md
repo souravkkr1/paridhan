@@ -227,7 +227,7 @@ Get a user's shopping cart.
 }
 ```
 
-<h2>Products</h2>
+<h2>Orders</h2>
 `POST /orders`
 <p>Place an order for a user's shopping cart.</p>
 

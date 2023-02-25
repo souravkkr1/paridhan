@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const { UserModel } = require("../models/user.model")
 
 // import jwt from "jsonwebtoken"
 require("dotenv").config();
@@ -42,20 +43,17 @@ exports.requireSignIn = (req, res, next) => {
 //     }
 // };
 
-// exports.adminValidate = async (req, res, next) => {
-//     const token = req.headers.authorization;
-//     try {
-//         if (token) {
-//             const decoded = jwt.verify(token, process.env.secret)
-//             if (decoded) {
-//                 const userID = decoded.userID;
-//                 req.body.userID = userID;
-//                 next();
-//             } else {
-//                 res.send("Please login first")
-//             }
-//         }
-//     } catch (error) {
-//         return res.send({ "message": "Please login first" });
-//     }
-// };
+exports.adminValidate = async (req, res, next) => {
+    try {
+        const token = req.headers.authorization;
+        const user = jwt.verify(token, process.env.secret);
+        // const user = await UserModel.findById(req.body.userID)
+        if (user.role == "admin") {
+            next();
+        } else {
+            res.send("You are not authorized")
+        }
+    } catch (error) {
+        return res.send({ "message": "Please login first" });
+    }
+};

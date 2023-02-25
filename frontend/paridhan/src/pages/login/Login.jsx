@@ -16,23 +16,25 @@ const Login = () => {
     pass:"",
   };
 
-  const { isAuth} = useSelector((store) => store.AuthReducer);
+  const { isAuth, user} = useSelector((store) => store.AuthReducer);
     const dispatch = useDispatch();
 
-    const [user, setUser] = useState(initForm);
+    const [users, setUsers] = useState(initForm);
     const data = (e) => {
       const { name, value } = e.target;
-      setUser((prev) => {
+      setUsers((prev) => {
         return { ...prev, [name]: value };
       });
     };
     const submitHandler = (e) => {
       e.preventDefault();
-      dispatch(signin(user));
+      dispatch(signin(users));
     };
   
-    if (isAuth) {
+    if (isAuth &&  user?.role=="user") {
       return <Navigate to={"/"} />;
+    }else if(isAuth && user?.role=="admin"){
+      return <Navigate to={"/dashboard"} />
     }
 
   // const [user, setUser]= useState(initState);
@@ -71,7 +73,7 @@ const Login = () => {
               >
                 <input
                   onChange={(e) => data(e)}
-                  value={user.email}
+                  value={users.email}
                   placeholder="Enter Email"
                   type="email"
                   name="email"
@@ -79,7 +81,7 @@ const Login = () => {
                 />
                 <input
                   onChange={(e) => data(e)}
-                  value={user.pass}
+                  value={users.pass}
                   placeholder="Enter Password"
                   type="password"
                   name="pass"

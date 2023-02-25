@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './nav.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
     Button,
     IconButton,
@@ -9,11 +9,17 @@ import {
     MenuItem,
     MenuList,
   } from "@chakra-ui/react";
-  import { ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { useDispatch, useSelector } from 'react-redux';
+import { signout } from '../../redux/authReducer/action';
 
 const Nav = () => {
 
-    const isAuth=true;
+    // const isAuth=true;
+
+    const { isAuth, user } = useSelector((store) => store.AuthReducer);
+    const dispatch = useDispatch();
+    const navigate=useNavigate()
 
   return (
     <div className={style.navbar}>
@@ -29,7 +35,7 @@ const Nav = () => {
       <div className={style.right}>
       <Menu>
           <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-            {isAuth ? "SOURAV" : `PROFILE`}
+          {isAuth ? user.name : `PROFILE`}
           </MenuButton>
           {!isAuth ? (
             <MenuList>
@@ -47,7 +53,10 @@ const Nav = () => {
           ) : (
             <MenuList>
               <MenuItem>
-                <button>Sign out</button>
+                <button onClick={() => {
+                  dispatch(signout())
+                  navigate("/login")
+                  }}>Sign out</button>
               </MenuItem>
             </MenuList>
           )}

@@ -1,6 +1,7 @@
 const express = require("express");
 const productRouter = express.Router();
 const { ProductModel } = require("../models/product.model")
+const { adminValidate, requireSignIn } = require("../middlewares/validator")
 
 // Get all products
 productRouter.get('/', async (req, res) => {
@@ -48,15 +49,15 @@ productRouter.post('/add', async (req, res) => {
     }
 });
 
-
-
 // Update product by id
 productRouter.patch('/:id', async (req, res) => {
     const payload = req.body;
-    const {id} = req.params;
+    console.log("pay:", payload)
+    const { id } = req.params;
     console.log(payload)
     try {
         await ProductModel.findByIdAndUpdate({ _id: id }, payload)
+        console.log("pay2:", payload)
         res.send("Product edited successfully")
     } catch (err) {
         console.log(err)

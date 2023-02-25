@@ -50,9 +50,32 @@ const Products = () => {
     const [edit, setEdit]= useState(editState);
     const [editID, setEditID]=useState("");
 
-    
+    // Get All Products
 
-    const addProduct=(e)=>{
+    const getData=()=>{
+        axios
+        .get(`${process.env.REACT_APP_API_ENDPOINT}/products`)
+        .then((res)=>{
+            setProd(res.data)})
+        .catch((err)=> {
+            console.log(err)})
+    }
+
+     useEffect(()=>{
+        getData();
+     },[])
+
+
+    //  Add Product Data
+      const data = (e) => {
+        const { name, value } = e.target;
+        setProduct((prev) => {
+          return { ...prev, [name]: value };
+        });
+      };
+
+    // Add Product Request
+      const addProduct=(e)=>{
         e.preventDefault();
         axios
         .post(`${process.env.REACT_APP_API_ENDPOINT}/products/add`, product)
@@ -64,13 +87,17 @@ const Products = () => {
       }
 
 
-      const data = (e) => {
-        const { name, value } = e.target;
-        setProduct((prev) => {
-          return { ...prev, [name]: value };
-        });
-      };
+    //   Get all the Product details in Edit Product Form
+    const handleEdit=(id)=>{
+        setEditID(id);
+            axios
+            .get(`${process.env.REACT_APP_API_ENDPOINT}/products/${id}`)
+            .then(res=> setEdit(res.data))
+            .catch(err=>console.log(err))
+            onOpen()
+        }
 
+    //   Edit Product Data
       const editData = (e) => {
         const { name, value } = e.target;
         setEdit((prev) => {
@@ -78,46 +105,26 @@ const Products = () => {
         });
       };
 
-    useEffect(()=>{
-       getData();
-    },[])
-
-    const getData=()=>{
+    // Edit Product Request
+      const postEdit=(e)=>{
+        e.preventDefault();
+        const payload=edit;
+            axios
+            .patch(`${process.env.REACT_APP_API_ENDPOINT}/products/${editID}`, payload)
+            .then((res)=> getData())
+            .then((res)=> onClose())
+            .catch((err)=>{
+                console.log(err)
+            })
+      }
+    
+    // Handle Delete Product
+    const handleDelete=(id)=>{
         axios
-        .get(`${process.env.REACT_APP_API_ENDPOINT}/products`)
-        .then((res)=>{
-            setProd(res.data)})
-        .catch((err)=> {
-            console.log(err)})
+        .delete(`${process.env.REACT_APP_API_ENDPOINT}/products/${id}`)
+        .then((res)=> getData())
+        .catch(err=> console.log(err))
     }
-
-          const handleDelete=(id)=>{
-                axios
-                .delete(`${process.env.REACT_APP_API_ENDPOINT}/products/${id}`)
-                .then((res)=> getData())
-          }
-
-          const handleEdit=(id)=>{
-            setEditID(id);
-                axios
-                .get(`${process.env.REACT_APP_API_ENDPOINT}/products/${id}`)
-                .then(res=> setEdit(res.data))
-                .catch(err=>console.log(err))
-                onOpen()
-          }
-
-          const postEdit=(e)=>{
-            e.preventDefault();
-            const payload=edit;
-                axios
-                .patch(`${process.env.REACT_APP_API_ENDPOINT}/products/${editID}`, payload)
-                .then((res)=> getData())
-                .then((res)=> onClose())
-                .catch((err)=>{
-                    console.log(err)
-                })
-            // console.log("id:",editID)
-          }
 
           
   return (

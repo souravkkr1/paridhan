@@ -98,7 +98,7 @@ Edit details of any users by _Id
 <p>`DELETE /user/delete/:id`</p>
 Delete any users by _Id
 
-<h4>Request Body</h4>
+<h4>Response Body</h4>
 
 ```
 {

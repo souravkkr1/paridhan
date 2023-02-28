@@ -1,3 +1,33 @@
+<h1>Paridhan Frontend</h1>
+<a href="paridhan.vercel.app/">Click me to visit</a>
+
+# Paridhan
+
+> Paridhan is an e-commerce website and Discovery Platform for Fashionable Men and Women Features
+
+# Tech-Stacks
+
+- **Front-end:** ReactJs, Css, Redux, ChakraUi, React-router-dom ,React-Redux, NodeJs, MongoDB, Express, Mongoose, Bcrypt, JWT
+- **Version control:** Git and GitHub.
+- **Hosting:** Vercel
+
+## Features
+
+<h3>User:</h3>
+- Sign Up Page
+- Login Page
+- Add Products
+- Checkout Page
+- Payment Page
+- User Profile
+
+<h3>Admin</h3>
+- Dashboard
+- Product Page
+- Order Page
+- User Page
+
+
 <h1>API Endpoints</h1>
 <h2>Users</h2>
 `POST /user/signup`
